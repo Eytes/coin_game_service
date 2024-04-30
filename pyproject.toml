@@ -1,0 +1,41 @@
+[tool.poetry]
+name = "coin-game-service"
+version = "0.1.0"
+description = ""
+authors = ["Eytes <yura.shamanov2000@bk.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = {extras = ["all"], version = "^0.110.2"}
+motor = "^3.4.0"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.4.2"
+mypy = "^1.10.0"
+pytest = "^8.2.0"
+flake8 = "^7.0.0"
+flake8-pyproject = "^1.2.3"
+flake8-bugbear = "^24.4.26"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.mypy]
+disable_error_code = ["import-untyped"]
+check_untyped_defs = true
+allow_redefinition = true
+
+[tool.flake8]
+max_line_length = 88
+show_source = true
+statistics = true
+exclude = [
+    ".git",
+    "__pycache__"
+]
