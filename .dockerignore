@@ -1,0 +1,8 @@
+Dockerfile
+.idea
+.vscode
+.git*
+__pycache__
+tests
+README*
+.env*

@@ -1,0 +1,43 @@
+version: "3"
+
+services:
+  mongodb:
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      timeout: 10s
+      interval: 10s
+      retries: 5
+    image: mongo:latest
+    command:
+      - "--auth"
+    restart: always
+    env_file:
+      - .env
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
+      - MONGO_INITDB_DATABASE=${MONGO_DATABASE_NAME}
+    ports:
+      - "27017:27017"
+  #    volumes:
+  #      - mongo_data:/data/db
+
+  coin_game_service:
+    depends_on:
+      database:
+        condition: service_healthy
+    healthcheck:
+      test: ping -c 4 localhost
+      timeout: 2s
+      interval: 30s
+      retries: 5
+    #    image: eytes/coin_game_service
+    build: ./
+    env_file:
+      - .env
+    restart: always
+    ports:
+      - "8080:8080"
+
+#volumes:
+#  mongo_data:
