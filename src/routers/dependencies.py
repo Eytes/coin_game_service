@@ -5,7 +5,7 @@ from fastapi import Path
 
 from .exceptions import CoinNotFoundHTTPException
 from ..core.services import coin_service
-from ..schemes import CoinHash
+from ..schemes import CoinHash, Coin
 
 
 async def create_coin() -> UUID:
@@ -20,3 +20,10 @@ async def get_coin_hash(coin_id: Annotated[UUID, Path]) -> CoinHash:
     if coin:
         return coin
     raise CoinNotFoundHTTPException()
+
+
+async def get_coin(coin_id: Annotated[UUID, Path]) -> Coin:
+    coin = await coin_service.get_coin(coin_id)
+    if coin:
+        return coin
+    raise CoinNotFoundHTTPException

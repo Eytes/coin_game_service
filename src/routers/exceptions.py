@@ -1,4 +1,9 @@
 from fastapi import HTTPException, status
+from pydantic import BaseModel
+
+
+class HTTPExceptionResponseSchema(BaseModel):
+    detail: str
 
 
 class CoinNotFoundHTTPException(HTTPException):
