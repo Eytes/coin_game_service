@@ -33,9 +33,7 @@ class AsyncMongoRegistry(AsyncRegistry):
         :param session:
         :return: id новой записи
         """
-        result = await self.__collection.insert_one(
-            document=item_data.model_dump(by_alias=True)
-        )
+        result = await self.__collection.insert_one(item_data.model_dump(by_alias=True))
         return result.inserted_id
 
     async def delete_by_id(
