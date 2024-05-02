@@ -22,7 +22,7 @@ class CoinHash(BaseModel):
 
 class Coin(BaseModel):
     id: UUID = Field(alias="_id", default_factory=uuid4)
-    timestamp: int = Field(default_factory=datetime.now(UTC).timestamp().__int__)
+    timestamp: int = Field(default_factory=lambda: int(datetime.now(UTC).timestamp()))
     hash: str = ""
     salt: str = ""
     is_live: bool = True
