@@ -24,7 +24,7 @@ services:
 
   coin_game_service:
     depends_on:
-      database:
+      mongodb:
         condition: service_healthy
     healthcheck:
       test: ping -c 4 localhost
