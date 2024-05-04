@@ -31,7 +31,7 @@ async def new_coin(coin_id: Annotated[UUID, Depends(create_coin)]):
         status.HTTP_404_NOT_FOUND: {"model": HTTPExceptionResponseSchema},
     },
 )
-async def get_coin_hash(coin_hash: Annotated[CoinHash, Depends(get_coin_hash)]):
+async def get_coin_only_hash(coin_hash: Annotated[CoinHash, Depends(get_coin_hash)]):
     return coin_hash
 
 
@@ -43,5 +43,5 @@ async def get_coin_hash(coin_hash: Annotated[CoinHash, Depends(get_coin_hash)]):
         status.HTTP_404_NOT_FOUND: {"model": HTTPExceptionResponseSchema},
     },
 )
-async def get_coin(coin: Annotated[Coin, Depends(get_coin)]):
+async def get_coin_full(coin: Annotated[Coin, Depends(get_coin)]):
     return coin
