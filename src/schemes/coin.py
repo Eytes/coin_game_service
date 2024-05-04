@@ -13,7 +13,7 @@ from pydantic import (
 )
 from typing_extensions import Self
 
-from .utils import get_hash_sha256
+from .utils import get_sha256_hash
 
 
 class CoinSide(str, Enum):
@@ -41,5 +41,5 @@ class Coin(BaseModel):
 
     @model_validator(mode="after")
     def calculate_hash_and_salt(self) -> Self:
-        self.hash, self.salt = get_hash_sha256(self.side.value)
+        self.hash, self.salt = get_sha256_hash(self.side.value)
         return self

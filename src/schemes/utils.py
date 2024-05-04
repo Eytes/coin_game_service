@@ -2,7 +2,7 @@ from Crypto.Hash import SHA256
 from Crypto.Random import get_random_bytes
 
 
-def get_hash_sha256(value: str, _salt_size: int = 50) -> tuple[str, str]:
+def get_sha256_hash(value: str, _salt_size: int = 50) -> tuple[str, str]:
     """
     Вычисление хеша с солью значения `value`
     :param value: значение, хеш которого необходимо вычислить

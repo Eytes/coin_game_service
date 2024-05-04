@@ -1,5 +1,6 @@
 import os
 
+from pydantic import PositiveInt
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -12,7 +13,7 @@ class MongoSettings(BaseSettings):
     username: str = os.getenv("MONGO_USERNAME")
     password: str = os.getenv("MONGO_PASSWORD")
     host: str = os.getenv("MONGO_HOST")
-    port: int = int(os.getenv("MONGO_PORT") or 27017)
+    port: PositiveInt = int(os.getenv("MONGO_PORT") or 27017)
     database_name: str = os.getenv("MONGO_DATABASE_NAME")
     url: str = f"mongodb://{username}:{password}@{host}:{port}/"
 

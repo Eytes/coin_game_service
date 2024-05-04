@@ -1,2 +1,3 @@
-from .coin import Coin, CoinHash
-from .player import Player
+from .coin import *
+from .distribution import *
+from .player import *

@@ -1,9 +1,8 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, PositiveInt
 
 from .coin import CoinSide
 
 
 class Player(BaseModel):
-    id: int
-    bet: float
+    id: PositiveInt
     coin_side: CoinSide
