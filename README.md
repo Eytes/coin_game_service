@@ -13,3 +13,5 @@ docker compose up -d
 ## Планы на будущее:
 
 - [ ] создание TLS соединения
+- [ ] добавление авторизации по jwt токену
+- [ ] автоматического удаление монетки из БД (https://stackoverflow.com/questions/51856567/how-to-delete-the-document-in-mongodb-after-3-mins-based-on-created-time-by-pyth?rq=4)
